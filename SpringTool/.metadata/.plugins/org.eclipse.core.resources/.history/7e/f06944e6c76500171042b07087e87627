@@ -1,0 +1,14 @@
+package com.jenny.pets.models;
+
+public class Cat extends Animal {
+
+	public Cat() {
+		
+	}
+
+	@Override
+	public String showAffection() {
+		return "";
+	}
+
+}

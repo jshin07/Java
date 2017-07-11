@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Index</title>
+</head>
+<body>
+	<form method="get" action="/animals/dog">
+		<p>Name: </p><input type="text" name="name" value=""></input>
+		<p>Breed: </p><input type="text"name="breed" value=""></input>
+		<p>Weight: </p><input type="text" name="weight" value=""></input>
+		<input type= "submit"></input>
+	</form>
+	
+	<form method="get" action="/animals/cat">
+		<p>Name: </p><input type="text" name="name" value=""></input>
+		<p>Breed: </p><input type="text"name="breed" value=""></input>
+		<p>Weight: </p><input type="text" name="weight" value=""></input>
+		<input type= "submit"></input>
+	</form>
+	
+</body>
+</html>

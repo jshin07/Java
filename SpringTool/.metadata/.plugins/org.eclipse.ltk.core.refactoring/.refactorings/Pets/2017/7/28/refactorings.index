@@ -1,0 +1,11 @@
+1499727215085	Move 'views' to 'WEB-INF'
+1499727217586	Move 'static' to 'WEB-INF'
+1499727413189	Delete element
+1499727744539	Delete element
+1499727749714	Delete element
+1499727939373	Delete element
+1499728563830	Delete element
+1499729046499	Encapsulate field 'name'
+1499729057479	Encapsulate field 'breed'
+1499729064355	Encapsulate field 'weight'
+1499733216032	Rename resource 'form.html'

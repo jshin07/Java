@@ -1,0 +1,12 @@
+package com.jenny.pets.models;
+
+public abstract class Animal implements Pet {
+	private String name;
+	private String breed;
+	private double weight;
+	
+	public Animal() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

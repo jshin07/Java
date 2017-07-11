@@ -1,0 +1,46 @@
+<?<?xml version="1.0" encoding="UTF-8"?>
+<resturant>
+    <display-name>ResturantMenuProject</display-name>
+    <servlet>
+        <servlet-name>testServlet</servlet-name>
+        <servlet-class>org.codingdojo.tutorial.TestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>testServlet</servlet-name>
+        <url-pattern>/testServlet</url-pattern>
+    </servlet-mapping>
+
+    <full_menu>
+        <menu catagory = "lunch">
+            <name> Meatball Spagehtti </name>
+            <desciption> Made from scratch meatball</decription>
+            <price> $15.00</price>
+        </menu>
+        <menu catagory = "lunch">
+            <name> Cheese Pizza </name>
+            <desciption> Everyone's favorite cheese pizza</decription>
+            <price> $25.00</price>
+        </menu>
+        <menu catagory = "lunch">
+            <name> Hotdog </name>
+            <desciption> With all condiments!</decription>
+            <price> $8.00</price>
+        </menu>
+        <menu catagory = "dinner">
+            <name> Steak </name>
+            <desciption> Aged Angus steak</decription>
+            <price> $28.00</price>
+        </menu>
+        <menu catagory = "dinner">
+            <name> Baby Back Ribs </name>
+            <desciption> Falls off the bones</decription>
+            <price> $26.00</price>
+        </menu>
+        <menu catagory = "dinner">
+            <name> Dinner Salad </name>
+            <desciption> Fully loaded dinner salad</decription>
+            <price> $16.00</price>
+        </menu>
+    </full_menu>
+
+</resturant>
