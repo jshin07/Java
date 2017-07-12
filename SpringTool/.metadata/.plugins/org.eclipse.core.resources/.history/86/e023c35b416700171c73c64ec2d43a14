@@ -1,0 +1,16 @@
+package com.jenny.stopwatch.models;
+
+public class Timer {
+	private double start;
+	private double end;
+	private double total;
+	
+	public double getStart() {
+		return start;
+	}
+	public void setStart(double start) {
+		this.start = start;
+	}
+	
+	
+}
