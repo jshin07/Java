@@ -1,0 +1,14 @@
+* {
+	margin: auto;
+	margin: 0px;
+	padding: 0px;
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.box{
+	display:inline-block;
+	float: left;
+	width:30%
+
+}
+
