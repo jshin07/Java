@@ -1,9 +1,0 @@
-package com.jenny.pets.models;
-
-public abstract class Animal {
-
-	public Animal() {
-		// TODO Auto-generated constructor stub
-	}
-
-}

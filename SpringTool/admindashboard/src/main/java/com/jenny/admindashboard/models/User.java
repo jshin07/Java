@@ -16,18 +16,21 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 
 @Entity
 @Table(name="users")
 public class User {
-
 	@Id
 	@GeneratedValue
 	private Long id;
 	
-	@Size(min=5)
+	@Email
+//	@NotEmpty(message= "Please enter your email")
 	private String email;
 	
 	@Size(min=1)
@@ -63,7 +66,17 @@ public class User {
 	        name = "users_roles", 
 	        joinColumns = @JoinColumn(name = "user_id"), 
 	        inverseJoinColumns = @JoinColumn(name = "role_id"))
+	
 	private List<Role> roles;	
+	
+	public boolean isAdmin(){
+		for (Role role: this.getRoles()){
+			if (role.getName().equals("ROLE_ADMIN")){
+				return true;
+			}
+		}
+		return false;
+	}
 	 
 	public User(){}
 	
@@ -138,5 +151,5 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
-	}	
+	}
 }

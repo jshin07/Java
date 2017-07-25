@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model/>
+<aop-reference-model>
+<aop-project name="portfolio"/>
+<aop-project name="admindashboard"/>
+<aop-project name="counter"/>
+<aop-project name="controllerspractice"/>
+<aop-project name="license"/>
+<aop-project name="ninjagold"/>
+<aop-project name="displaydate"/>
+<aop-project name="auth"/>
+<aop-project name="dojoninjas"/>
+<aop-project name="loginreg"/>
+<aop-project name="lookify"/>
+<aop-project name="dojosurvey"/>
+<aop-project name="languagereloaded"/>
+<aop-project name="productscatagories"/>
+<aop-project name="thecode"/>
+<aop-project name="grouplanguages"/>
+<aop-project name="hellohuman"/>
+<aop-project name="learningplatform"/>
+</aop-reference-model>

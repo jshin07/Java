@@ -1,12 +1,17 @@
 package com.jenny.admindashboard.models;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 
@@ -43,5 +48,15 @@ public class Role {
     public void setUsers(List<User> users) {
         this.users = users;
     }	
+    
+    @DateTimeFormat(pattern="MM:dd:yyyy HH:mm:ss")
+	private Date createdAt;
+	
+	@DateTimeFormat(pattern="MM:dd:yyyy HH:mm:ss")
+	private Date updatedAt;
+
+
+	
+	
 
 }

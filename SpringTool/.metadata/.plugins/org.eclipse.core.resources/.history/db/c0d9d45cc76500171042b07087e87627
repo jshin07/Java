@@ -1,9 +1,0 @@
-package com.jenny.pets.models;
-
-public class Cat {
-
-	public Cat() {
-		
-	}
-
-}
