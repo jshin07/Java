@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;javabeltreviewer/src/main/webaap/WEB-INF/logregjsp.jsp&apos; to &apos;logreg.jsp&apos;" description="Rename resource &apos;logregjsp.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webaap/WEB-INF/logregjsp.jsp" name="logreg.jsp" stamp="1501012796061" updateReferences="true"/>
+</session>

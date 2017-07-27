@@ -1,0 +1,14 @@
+package com.jenny.javabelt1.services;
+
+import org.springframework.stereotype.Service;
+
+import com.jenny.javabelt1.repositories.SubscriptionRepository;
+
+@Service
+public class SubscriptionService {
+	private SubscriptionRepository subscriptionRepository;
+	
+	public SubscriptionService(SubscriptionRepository subscriptionRepository){
+		this.subscriptionRepository = subscriptionRepository;
+	}
+}

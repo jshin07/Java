@@ -1,0 +1,131 @@
+package com.jenny.javareviewer.controllers;
+
+import java.security.Principal;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.jenny.javareviewer.models.Ring;
+import com.jenny.javareviewer.models.Role;
+import com.jenny.javareviewer.models.User;
+import com.jenny.javareviewer.services.RingService;
+import com.jenny.javareviewer.services.RoleService;
+import com.jenny.javareviewer.services.UserService;
+import com.jenny.javareviewer.validator.UserValidator;
+
+@Controller
+public class UserController {
+	private UserService userService;
+	private RoleService roleService;
+	private RingService ringService;
+	private UserValidator userValidator;
+	
+	public UserController(UserService userService, RoleService roleService, UserValidator userValidator, RingService ringService){
+		this.userService= userService;
+		this.roleService = roleService;
+		this.ringService = ringService;
+		this.userValidator = userValidator;
+	}
+	
+// TO VIEW MAIN LOG IN AND REGISTRATION PAGE --LOGREG.JSP
+	@RequestMapping(value= {"/login", "/register"})
+	public String logReg(@Valid @ModelAttribute("user")User user, @RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout,  Model model){
+		if(error != null) {
+            model.addAttribute("errorMessage", "Invalid Credentials.");
+        }
+        if(logout != null) {
+            model.addAttribute("logoutMessage", "Logout Successfull!");
+        }
+		return "logReg.jsp";
+	}
+
+// TO REGISTER NEW USER 
+	@PostMapping("/register")
+	public String register(@Valid @ModelAttribute("user")User user, BindingResult result, Model model){
+		userValidator.validate(user, result);
+		
+		if(result.hasErrors()){
+			return "logReg.jsp";
+		}	
+		if(roleService.findByName("ROLE_ADMIN").getUsers().size()<1){
+			userService.saveWithAdminRole(user);
+		} else{
+			userService.saveWithUserRole(user);			
+		}	
+		return "redirect:/bind_darkness";
+	}
+
+	
+// AFTER POSTMAPPING FROM LOGIN (BACK-END) TO DETERMIN ADMIN OR USER-- THEN REROUTE
+
+	@RequestMapping(value={"/","/bind_darkness"})
+	public String admin(Principal principal, @ModelAttribute("ring") Ring ring, Model model){
+		String email= principal.getName();
+		User user= userService.findByEmail(email);
+//		userService.update(user);
+		model.addAttribute("currentUser", user);
+		model.addAttribute("allRings", ringService.all());
+		return "bind_darkness.jsp";
+	}
+	
+	@RequestMapping("/ringCreator")
+	public String createRing(Model model){
+		model.addAttribute("ring", new Ring());
+		return "createRing.jsp";
+	}
+	
+	@PostMapping("/newRing")
+	public String newRing(@Valid @ModelAttribute("ring") Ring ring, Model model, BindingResult result, @ModelAttribute("user") User user){
+	
+		ringService.create(ring);
+		model.addAttribute("allRings", ringService.all());
+		return "redirect:/bind_darkness";
+	}
+	
+	@RequestMapping("/deleteRing/{id}")
+	public String deleteRing(@PathVariable("id")Long id){
+		ringService.destroy(id);
+		return "redirect:/bind_darkness";
+	}
+
+	@RequestMapping("/teamCreator")
+	public String createTeam(Model model){
+		return "createGuild.jsp";
+	}
+	
+	
+	
+//	@RequestMapping("/dashboard")
+//	public String dashboard(Principal principal, Model model){
+//		String email= principal.getName();
+//		User user= userService.findByEmail(email);
+//		userService.update(user);
+//		model.addAttribute("currentUser", user);
+//		return "dashboard.jsp";
+//	}
+//	
+//	@RequestMapping("/delete/{id}")
+//	public String delete(@PathVariable("id")Long id){
+//		userService.delete(id);
+//		return "redirect:/admin";
+//	}
+//	
+//	@RequestMapping("/makeadmin/{id}")
+//	public String makeadmin(@PathVariable("id")Long id){
+//		User user= userService.findById(id);
+//		List<Role> roleList= user.getRoles();
+//		roleList.add(roleService.findByName("ROLE_ADMIN"));
+//		userService.update(user);
+//		return "redirect:/admin";
+//	}
+	
+}

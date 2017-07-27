@@ -1,0 +1,47 @@
+package com.jenny.javareviewer.models;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@Table(name="guilds")
+public class Guild {
+	@Id
+	@GeneratedValue
+	private Long id;
+	
+	@Size(min=1)
+	private String guildName;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy HH:mm:ss")
+	private Date createdAt;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy HH:mm:ss")
+	private Date updatedAt;
+	
+	@PrePersist
+	protected void onCreated(){
+		this.createdAt= new Date();
+	}
+	
+	@PreUpdate
+	protected void onUpdated(){
+		this.updatedAt= new Date();
+	}
+	
+	@ManyToMany(fetch= FetchType.EAGER)
+	@JoinTable(
+			name ="user_teams",
+			joinColumn =@JoinColumn(name= "user_id"),
+			inverseJoinColumns = @JoinColumn(name= "team_id"))
+	
+}

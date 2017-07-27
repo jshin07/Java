@@ -1,0 +1,6 @@
+package com.jenny.javareviewer.repositories;
+
+@Repository
+public interface GuildRepository extends CrudRepository <Guild, Long>{
+	public List<Guild> findAll();
+}

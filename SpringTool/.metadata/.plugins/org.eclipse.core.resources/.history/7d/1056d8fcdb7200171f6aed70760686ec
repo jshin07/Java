@@ -1,0 +1,7 @@
+package com.jenny.javabelt1.repositories;
+
+@Repository
+public interface SubscriptionRepository extends CrudRepository <Subscription, Long>{
+	public List<Subscription> findAll();
+	public Subscription findById(Long id);
+}

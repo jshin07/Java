@@ -1,0 +1,6 @@
+package com.jenny.javareviewer.services;
+
+@Service
+public class RingService {
+	private 
+}

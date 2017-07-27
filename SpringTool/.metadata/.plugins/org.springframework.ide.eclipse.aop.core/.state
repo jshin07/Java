@@ -7,8 +7,11 @@
 <aop-project name="license"/>
 <aop-project name="ninjagold"/>
 <aop-project name="displaydate"/>
+<aop-project name="javareviewer"/>
 <aop-project name="auth"/>
 <aop-project name="dojoninjas"/>
+<aop-project name="javabelt1"/>
+<aop-project name="demo"/>
 <aop-project name="loginreg"/>
 <aop-project name="lookify"/>
 <aop-project name="dojosurvey"/>

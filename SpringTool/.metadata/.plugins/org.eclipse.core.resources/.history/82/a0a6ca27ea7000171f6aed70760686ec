@@ -1,6 +1,0 @@
-Match.user.passwordConfirmation= Password and password confirmation does not match.
-Size.user.email=Email must be at least 5 characters.
-Size.user.firstName=first name must be greater than 1 character.
-Size.user.lastName=last name must be greater than 1 character.
-Size.user.password=Password must be greater than 4 characters.
-

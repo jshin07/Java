@@ -1,0 +1,5 @@
+package com.jenny.javareviewer.repositories;
+
+public interface RingRepository {
+
+}
