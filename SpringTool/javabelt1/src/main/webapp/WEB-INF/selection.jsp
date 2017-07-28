@@ -9,21 +9,29 @@
 <title>Package Selection!</title>
 </head>
 <body>
-	<h1>Welcome to Dojoscriptions, <c:out value= "${currentUser}"/> </h1>
+	<h1>Welcome to Dojoscriptions, <c:out value= "${currentUser.firstName}"/> </h1>
+	
+	<form id="logoutForm" method="POST" action="/logout">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" value="Logout!" />
+    </form>	
+    
 	<h3>Please choose a subscription and a start date</h3>
 	
 	
-    <form:form method="POST" action="/signup/${currentUser}" modelAttribute="subscription">
+    
+    <form:form method="POST" action="/signup/${currentUser.id}" modelAttribute="subscription">
         <p>
             <form:label path="due" id="due">Due Day:
             	<form:input path="due" type="number" id="due"/>
             </form:label>
         </p>
-        <p>
+        <p> 
+
             <form:label path="subscriptionName">Package:
             	<form:select path= "subscriptionName">
 	            	<c:forEach items= "${subscriptions}" var = "subscription">
-	            		<form:option value = "{subscription.id}" id="subId"> <c:out value= "${subscription.subscriptionName} ${subscription.price}"/></form:option>
+	            		<form:option value = "${subscription.id}"> <c:out value= "${subscription.subscriptionName} ${subscription.price}"/></form:option>
 	            	</c:forEach>
             	</form:select>
             </form:label>

@@ -56,14 +56,21 @@ public class UserController {
 		}	
 		if(roleService.findByName("ROLE_ADMIN").getUsers().size()<1){
 			userService.saveWithAdminRole(user);	
-			return "redirect:/selection";
 		} else{
 			userService.saveWithUserRole(user);	
-			return "redirect:/selection";
 		}	
-		
+		return "redirect:/reroute";
 	}
 	
+	
+//	@RequestMapping("/reroute")
+//	public String reroute(Principal principal,@ModelAttribute("user")User user){
+//		if (user.isAdmin()){
+//			return "redirect:/admin";
+//		} else {
+//			return "redirect:/selection";
+//		}
+//	}
 	
 	@RequestMapping("/selection")
 	public String selection(Principal principal, @ModelAttribute ("subscription") Subscription subscription, BindingResult result, Model model){
@@ -85,7 +92,7 @@ public class UserController {
 		if (user.isAdmin()){
 			return "redirect:/admin";
 		} else {
-			return "redirect:/profile";
+			return "redirect:/selection";
 		}
 	}
 
@@ -97,6 +104,13 @@ public class UserController {
 		
 		model.addAttribute("currentUser", user);
 		model.addAttribute("allUsers", userService.all());
+		model.addAttribute("allSubscriptions", subscriptionService.all());
+		
+//		List<Subscription> list= user.getSubscriptions();
+//		System.out.println(list);
+
+		
+		
 		model.addAttribute("subscriptions", subscriptionService.all());
 		return "admin.jsp";
 	}
@@ -106,7 +120,7 @@ public class UserController {
 		String email= principal.getName();
 		User user= userService.findByEmail(email);
 		userService.update(user);
-		model.addAttribute("subscription", user.getSubscriptions());
+		model.addAttribute("subscriptions", user.getSubscriptions());
 		model.addAttribute("currentUser", user);
 		return "profile.jsp";
 	}
@@ -120,37 +134,57 @@ public class UserController {
 	
 	@PostMapping("/signup/{id}")
 	public String signup(@PathVariable("id") Long id,@ModelAttribute("subscription") Subscription subscription, BindingResult result){
-		String subId= (String)result.getFieldValue("subId");
+		//THIS IS THE SUBSCRIPTION ID
+//		System.out.println(result.getFieldValue("subscriptionName"));
+		
+		String subId= (String)result.getFieldValue("subscriptionName");
 		Subscription itsSubscription= subscriptionService.findById(Long.parseLong(subId.trim()));
 		
 		User user= userService.findById(id);
 		List<Subscription> list= user.getSubscriptions();
+		String dueDate= (String)result.getFieldValue("due");
+		int due = Integer.parseInt(dueDate);
+		itsSubscription.setDue(due);
 		list.add(itsSubscription);
 		user.setSubscriptions(list);
+
+
 		subscriptionService.create(itsSubscription);
 
 		return "redirect:/profile";
 	}
 
-	@RequestMapping("/deactivate/{id}")
+	@RequestMapping(value= {"/admin/activate/{id}", "/admin/deactivate/{id}"})
 	public String deactivate(@ModelAttribute("subscription") Subscription subscription, @PathVariable ("id") Long id){
 		boolean curStatus = subscriptionService.findById(id).isStatus();
+		
 		if(curStatus == true){
 			curStatus = false;
 		} else {
 			curStatus = true;
 		}
-		return "reirect/admin";
+		subscriptionService.findById(id).setStatus(curStatus);
+		subscriptionService.update(subscriptionService.findById(id));
+		return "redirect:/admin";
 	}
 	
 	
 	
-//	@RequestMapping("/delete/{id}")
-//	public String delete(@PathVariable("id")Long id){
-//		subscriptionService.delete(id);
-//		return "redirect:/admin";
+//	@PostMapping("/editUser/{id}")
+//	public String edit(@PathVariable("id")Long id, Model model, @ModelAttribute("User") User user, BindingResult result ){
+//
+//		return "redirect:/edit"+ id;
 //	}
 //	
-
+//	@RequestMapping("/edit/{id}")
+//	public String editUser(@PathVariable("id")Long id, Model model, @ModelAttribute("User") User user, BindingResult result){
+//		
+//		model.addAttribute("subscriptions", user.getSubscriptions());
+//		model.addAttribute("user", userService.findById(id));
+//		
+//		System.out.println(result.getFieldValue("firstName"));
+//		
+//		return "editUser.jsp";
+//	}
 	
 }

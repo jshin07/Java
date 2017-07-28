@@ -5,7 +5,48 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2017-07-27T09:15:00Z</updated>
+  <updated>2017-07-27T20:11:58Z</updated>
+  <entry>
+    <title>Spring Session MongoDB 2.0.0.M2 released</title>
+    <link rel="alternate" href="https://spring.io/blog/2017/07/27/spring-session-mongodb-2-0-0-m2-released" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2017-07-27:2992</id>
+    <updated>2017-07-27T20:11:58Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;Dear Spring Community,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Spring Session MongoDB 2.0.0.M2 is released. It is based on:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Session 2.0.0.M3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring Data Kay-RC2&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Reactor Bismuth-M3&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Spring 5.0.0.RC3&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This is the first milestone with Reactor support, making it usable with Spring WebFlux.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In the meantime, you can get the bits today if you visit the project site, get the coordinates, and &lt;em&gt;include the version number&lt;/em&gt; in your Spring Boot application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-session-data-mongodb/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-session-data-mongodb/docs/2.0.0.M2/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-session+mongodb"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
   <entry>
     <title>Spring Boot 1.5.6 available now</title>
     <link rel="alternate" href="https://spring.io/blog/2017/07/27/spring-boot-1-5-6-available-now" />
@@ -639,6 +680,33 @@ We expect RC and subsequent GA somewhere in the end of October, beginning of Nov
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We have split Spring Session into modules based upon the repository implementation. You will find:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-xml" data-lang="xml"&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-session-core&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;2.0.0.M3&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-session-data-redis&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;2.0.0.M3&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-session-hazelcast&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;2.0.0.M3&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;
+&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;org.springframework.session&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;spring-session-jdbc&amp;lt;/artifactId&amp;gt;
+  &amp;lt;version&amp;gt;2.0.0.M3&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;h1 id="feedback-please" class="sect0"&gt;&lt;a class="anchor" href="#feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-session"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt;, Joe &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt;, or Vedran &lt;a href="https://twitter.com/vedran_pavic"&gt;@vedran_pavic&lt;/a&gt;  on Twitter.&lt;/p&gt;
@@ -1021,18 +1089,5 @@ doesn&amp;#8217;t allow now to deserialize objects in the untrusted packages. Th
 &lt;div class="paragraph"&gt;
 &lt;p&gt;&lt;a href="http://projects.spring.io/spring-integration/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/INT"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.md"&gt;Contributions&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-integration"&gt;Help&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-integration"&gt;Chat&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Framework 4.3.10 available now</title>
-    <link rel="alternate" href="https://spring.io/blog/2017/07/20/spring-framework-4-3-10-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Stéphane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2017-07-20:2972</id>
-    <updated>2017-07-20T12:38:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I am pleased to announce that Spring Framework &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10000&amp;version=16213"&gt;4.3.10&lt;/a&gt; &lt;a href="http://projects.spring.io/spring-framework"&gt;is available now&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;This maintenance release is the base for the upcoming Spring Boot 1.5.5 maintenance release and includes 25 fixes and selected improvements. In particular, 4.3.10 now includes an upgrade to Objenesis 2.6 and is therefore ready for Google App Engine on Java 8.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/4.3.10.RELEASE/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

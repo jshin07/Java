@@ -168,15 +168,10 @@ public class User {
 	public void setSubscriptions(List<Subscription> subscriptions) {
 		this.subscriptions = subscriptions;
 	}
-
 	
-	public boolean isPicked(){
-		for (Subscription subscription: this.getSubscriptions()){
-			if (subscription.isStatus()){
-				return false;
-			}
-		}
-		return true;
+	public boolean hasSubscription(){
+		return this.subscriptions.size()>0;
+		
 	}
 	
 }

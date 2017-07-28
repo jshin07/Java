@@ -19,13 +19,29 @@
         <input type="submit" value="Logout!" />
     </form>		
 	
-	
-	<h3> Current Package:<c:out value="${subscription.subscriptionName}"></c:out> </h3>
-	<h3> Next Due Date:<c:out value="${subscription.due}"></c:out> </h3>
-	<h3> Amount Due: <c:out value="${subscription.price}"></c:out></h3>
-	<h3> User Since: <fmt:formatDate pattern = "MMMM dd, yyyy" value="${currentUser.createdAt}"/></h3>
+	<c:forEach items= "${subscriptions}" var= "subscription">
+	<table border="1">
+		<tr> 
+			<td>Current Package: </td>
+			<td> <c:out value="${subscription.subscriptionName}"></c:out> </td>
+		</tr>
+		<tr>
+			<td>Next Due Date:</td>
+			<td><fmt:formatDate pattern = "MMMM" value="${currentUser.createdAt}"/> <c:out value="${subscription.due}"></c:out>, <fmt:formatDate pattern = "yyyy" value="${currentUser.createdAt}"/> </td>
+		</tr>
+		<tr>
+			<td>Amount Due:</td>
+			<td>$<c:out value="${subscription.price}"></c:out></td>
+		</tr>
+		<tr>
+			<td>User Since:</td>
+			<td><fmt:formatDate pattern = "MMMM dd, yyyy" value="${currentUser.createdAt}"/></td>
+		</tr>
 
-		
+	</table><br>
+	</c:forEach>
+
+	
 	
 </body>
 </html>
